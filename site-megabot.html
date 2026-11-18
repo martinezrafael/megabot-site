@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>megabot | Sua loja vende no WhatsApp, mesmo quando você não está</title>
+<meta name="description" content="Um assistente que responde seus clientes no WhatsApp, recomenda produtos e manda o link de pagamento. Pronto em menos de 30 minutos. Teste grátis por 14 dias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F8F6;--surface:#FFFFFF;--ink:#16231F;--muted:#4F5B56;--line:#DDE3E0;--teal:#0F766E;--on-teal:#FFFFFF;--mist:#E6F4F1;--deep:#0B5A54;--amber:#F59E0B;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1715;--surface:#14211E;--ink:#E9F1EE;--muted:#9DB0AA;--line:#25352F;--teal:#2DD4BF;--on-teal:#07201C;--mist:#16302C;--deep:#7DE3D6;--amber:#F5B02E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1715;--surface:#14211E;--ink:#E9F1EE;--muted:#9DB0AA;--line:#25352F;--teal:#2DD4BF;--on-teal:#07201C;--mist:#16302C;--deep:#7DE3D6;--amber:#F5B02E;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 'DM Sans',system-ui,sans-serif;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:21px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+nav.menu{display:flex;gap:6px;align-items:center}
+nav.menu a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--muted);text-decoration:none;font-weight:500;border-radius:10px}
+nav.menu a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:12px;background:var(--teal);color:var(--on-teal);font:700 16px 'DM Sans',system-ui,sans-serif;text-decoration:none;border:0}
+.btn:hover{filter:brightness(1.08);color:var(--on-teal)}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.alt:hover{color:var(--ink);background:var(--mist)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:72px 0 80px}
+h1{margin:0 0 18px;font-size:clamp(36px,5.2vw,58px);line-height:1.03;letter-spacing:-.035em;font-weight:700}
+h2{margin:0 0 14px;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-.025em;font-weight:700}
+.lead{font-size:19px;color:var(--muted);max-width:34em;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.fine{font-size:14px;color:var(--muted);margin:0}
+.phone{max-width:380px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:18px}
+.phone-top{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);font-weight:700}
+.phone-top span{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+.chat{display:flex;flex-direction:column;padding-top:6px;min-height:340px}
+.m{max-width:86%;padding:10px 14px;border-radius:16px;margin:7px 0;line-height:1.4;font-size:15.5px;opacity:0;transform:translateY(6px);transition:opacity .45s,transform .45s}
+.m.show{opacity:1;transform:none}
+.m.c{align-self:flex-start;background:var(--bg);border:1px solid var(--line)}
+.m.b{align-self:flex-end;background:var(--mist);color:var(--deep)}
+.pay{display:inline-block;margin-top:8px;padding:9px 14px;border-radius:10px;background:var(--teal);color:var(--on-teal);font-weight:700;font-size:14.5px}
+.cap{text-align:center;font-size:13px;color:var(--muted);margin:12px 0 0}
+.band{background:var(--teal);color:var(--on-teal);padding:64px 0}
+.band h2{max-width:20em}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);margin-top:32px}
+.trio p{margin:0;padding:0 28px;border-left:1px solid color-mix(in srgb,var(--on-teal) 35%,transparent)}
+.trio p:first-child{padding-left:0;border-left:0}
+section{padding:72px 0}
+.steps{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--teal);color:var(--on-teal);font-weight:700;margin-bottom:14px}
+.steps b{display:block;font-size:19px;margin-bottom:4px}
+.steps span{color:var(--muted)}
+dl.feat{margin:32px 0 0}
+.feat div{display:grid;grid-template-columns:minmax(200px,.8fr) 1.6fr;gap:32px;padding:26px 0;border-top:1px solid var(--line)}
+.feat dt{font-size:21px;font-weight:700;letter-spacing:-.015em}
+.feat dd{margin:0;color:var(--muted);max-width:38em}
+.tablewrap{overflow-x:auto;margin-top:28px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:0}
+thead th{vertical-align:bottom;font-weight:700;padding-top:22px;padding-bottom:18px}
+thead .price{display:block;font-size:30px;letter-spacing:-.025em}
+thead .price small{font-size:14px;font-weight:400;color:var(--muted)}
+td:first-child,th:first-child{color:var(--muted);font-weight:500;width:30%}
+.hl{background:var(--mist)}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:8px 0;font-weight:700;font-size:18px;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;font-weight:400;color:var(--teal);flex:none}
+details[open] summary::after{content:"\2013"}
+details p{margin:0 0 20px;color:var(--muted);max-width:42em}
+.final{background:var(--teal);color:var(--on-teal);text-align:center;padding:72px 0}
+.final .btn{background:var(--on-teal);color:var(--teal)}
+.final .btn:hover{color:var(--teal)}
+footer{padding:36px 0 44px;color:var(--muted);font-size:14.5px}
+footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--muted)}
+@media (max-width:860px){
+ .hero{grid-template-columns:1fr;gap:40px;padding:40px 0 56px}
+ nav.menu a:not(.btn){display:none}
+ .trio{grid-template-columns:1fr;gap:20px}
+ .trio p,.trio p:first-child{padding:0;border-left:0}
+ .steps{grid-template-columns:1fr}
+ .feat div{grid-template-columns:1fr;gap:6px}
+ section{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.m{opacity:1;transform:none;transition:none}}
+</style>
+<noscript><style>.m{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<header>
+ <div class="w bar">
+  <a class="brand" href="#" aria-label="megabot, página inicial">
+   <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#0F766E"/><path d="M10 14a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4h-7l-6 5v-5h-1a4 4 0 0 1-2-3z" fill="#fff"/><circle cx="16.5" cy="18" r="1.9" fill="#0F766E"/><circle cx="23.5" cy="18" r="1.9" fill="#0F766E"/><circle cx="31" cy="9" r="4" fill="#F59E0B"/></svg>
+   megabot
+  </a>
+  <nav class="menu" aria-label="Principal">
+   <a href="#como-funciona">Como funciona</a>
+   <a href="#planos">Planos</a>
+   <a href="#perguntas">Perguntas</a>
+   <a class="btn" href="#testar">Testar grátis</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+ <div class="w hero">
+  <div>
+   <h1>Sua loja vende no WhatsApp, mesmo quando você não está</h1>
+   <p class="lead">Um assistente com inteligência artificial que responde seus clientes, recomenda produtos e manda o link de pagamento. Pronto em menos de 30 minutos, sem montar fluxos.</p>
+   <div class="cta">
+    <a class="btn" href="#testar">Testar grátis por 14 dias</a>
+    <a class="btn alt" href="#como-funciona">Ver como funciona</a>
+   </div>
+   <p class="fine">Sem cartão de crédito. O teste inclui 50 conversas.</p>
+  </div>
+  <div>
+   <div class="phone" role="img" aria-label="Exemplo de conversa: o cliente pede um café, o assistente recomenda duas opções e envia o link de pagamento por Pix">
+    <div class="phone-top"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="20" fill="#0F766E"/><path d="M10 14a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4h-7l-6 5v-5h-1a4 4 0 0 1-2-3z" fill="#fff"/><circle cx="16.5" cy="18" r="1.9" fill="#0F766E"/><circle cx="23.5" cy="18" r="1.9" fill="#0F766E"/></svg><div>Loja de café<span>responde agora</span></div></div>
+    <div class="chat" aria-hidden="true">
+     <div class="m c">Oi! Quero um café para V60, até R$ 60.</div>
+     <div class="m b">Oi! Tenho duas opções de 250 g: Mantiqueira (R$ 52,90) e Serra Alta (R$ 58,00). Qual você prefere?</div>
+     <div class="m c">Serra Alta, moído para filtro.</div>
+     <div class="m b">Combinado! Aqui está o seu link de pagamento.<br><span class="pay">Pagar R$ 58,00 com Pix</span></div>
+    </div>
+   </div>
+   <p class="cap">Exemplo de conversa com uma loja fictícia.</p>
+  </div>
+ </div>
+
+ <div class="band">
+  <div class="w">
+   <h2>Quem escreve fora do horário não espera</h2>
+   <div class="trio">
+    <p>As mensagens que chegam à noite ficam sem resposta, e a venda vai para quem respondeu primeiro.</p>
+    <p>As mesmas perguntas sobre prazo, troca e frete tomam o seu dia.</p>
+    <p>Você não sabe quantas vendas perdeu nem em que ponto a conversa travou.</p>
+   </div>
+  </div>
+ </div>
+
+ <section id="como-funciona">
+  <div class="w">
+   <h2>Em três passos, a sua loja atendendo</h2>
+   <ol class="steps">
+    <li><b>Conecte o seu número</b><span>Em poucos cliques, com um passo a passo na tela.</span></li>
+    <li><b>Preencha o formulário da loja</b><span>Prazos, trocas, pagamento e produtos. O assistente aprende só com o que você escrever.</span></li>
+    <li><b>Teste e publique</b><span>Converse com ele como se fosse um cliente. Quando gostar, é só publicar.</span></li>
+   </ol>
+   <dl class="feat">
+    <div><dt>Vende, não só responde</dt><dd>Recomenda produtos do seu catálogo e envia o link de pagamento por Pix na própria conversa. Preço e estoque vêm do seu cadastro, nunca do palpite do assistente.</dd></div>
+    <div><dt>Fala como a sua loja</dt><dd>Você define o tom e as regras, e o que ele nunca deve dizer. Ele responde apenas sobre a sua loja.</dd></div>
+    <div><dt>Chama uma pessoa na hora certa</dt><dd>Pagamento em dúvida, pedido especial ou cliente que pede atendente: o assistente passa a conversa com um resumo, e você assume pelo painel.</dd></div>
+    <div><dt>Você vê o resultado</dt><dd>Conversas, pedidos pagos e o ponto em que as vendas se perdem, tudo em um painel simples, junto com o uso do seu plano.</dd></div>
+   </dl>
+  </div>
+ </section>
+
+ <section id="planos" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="w">
+   <h2>Planos com preço fixo</h2>
+   <p class="lead" style="margin-bottom:0">Comece pelo teste grátis. Se passar da cota do mês, você escolhe: pausar o assistente ou pagar R$ 0,45 por conversa extra.</p>
+   <div class="tablewrap">
+    <table>
+     <caption style="position:absolute;left:-9999px">Comparação dos planos</caption>
+     <thead><tr><th scope="col"></th><th scope="col">Entrada<span class="price">R$ 149<small>/mês</small></span></th><th scope="col" class="hl">Intermediário<span class="price">R$ 349<small>/mês</small></span></th><th scope="col">Escala<span class="price">R$ 799<small>/mês</small></span></th></tr></thead>
+     <tbody>
+      <tr><td>Conversas por mês</td><td>300</td><td class="hl">1.000</td><td>3.000</td></tr>
+      <tr><td>Números de WhatsApp</td><td>1</td><td class="hl">1</td><td>Até 3</td></tr>
+      <tr><td>Pessoas no painel</td><td>1</td><td class="hl">3</td><td>10</td></tr>
+      <tr><td>Métricas</td><td>Básicas</td><td class="hl">Completas</td><td>Completas</td></tr>
+      <tr><td>Integração com loja virtual</td><td>Não</td><td class="hl">Não</td><td>Em breve</td></tr>
+      <tr><td>Suporte</td><td>E-mail</td><td class="hl">E-mail e chat</td><td>Prioritário</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="fine" style="margin-top:14px">Uma conversa é a janela de 24 horas aberta quando um cliente escreve. As cobranças da Meta, quando houver, vão direto para a sua conta do WhatsApp Business e não entram na nossa mensalidade.</p>
+  </div>
+ </section>
+
+ <section id="perguntas">
+  <div class="w">
+   <h2>Perguntas frequentes</h2>
+   <div style="margin-top:24px">
+    <details><summary>Preciso saber programar?</summary><p>Não. Você preenche um formulário guiado e testa o assistente antes de publicar.</p></details>
+    <details><summary>O que acontece quando ele não sabe responder?</summary><p>Ele passa a conversa para uma pessoa da sua equipe, com um resumo do que já foi dito, e você assume pelo painel.</p></details>
+    <details><summary>Posso usar o número que já uso na loja?</summary><p>Sim, com um passo a passo na tela. Se o seu número precisar de algum ajuste antes de ser conectado, o sistema avisa o que fazer.</p></details>
+    <details><summary>Quem paga as mensagens cobradas pela Meta?</summary><p>Se houver cobrança da Meta, por exemplo em mensagens enviadas fora da janela de 24 horas, ela vai direto para a sua conta do WhatsApp Business. A nossa mensalidade não inclui esse custo.</p></details>
+    <details><summary>Os dados da minha loja e dos meus clientes estão seguros?</summary><p>Tratamos os dados conforme a LGPD, só para atender a sua loja, e você pode pedir a exclusão de uma conversa ou de um contato quando quiser.</p></details>
+    <details><summary>Posso cancelar quando quiser?</summary><p>Pode. O cancelamento é feito por você mesmo, no painel, e vale a partir do próximo ciclo.</p></details>
+   </div>
+  </div>
+ </section>
+
+ <div class="final" id="testar">
+  <div class="w">
+   <h2>Teste grátis por 14 dias</h2>
+   <p style="margin:0 auto 26px;max-width:32em;opacity:.95">Sem cartão de crédito, com 50 conversas para ver o assistente atendendo a sua loja.</p>
+   <a class="btn" href="#">Criar minha conta</a>
+  </div>
+ </div>
+</main>
+
+<footer>
+ <div class="w row">
+  <span>© 2026 RM Sistemas para Internet LTDA. CNPJ 62.590.371/0001-28.</span>
+  <span><a href="#">Termos de uso</a> | <a href="#">Política de privacidade</a> | <a href="#">Status</a> | <a href="#">Contato</a></span>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var ms=document.querySelectorAll('.m');
+ var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ ms.forEach(function(m,i){
+  if(rm){m.classList.add('show');}
+  else{setTimeout(function(){m.classList.add('show');},700+i*1300);}
+ });
+})();
+</script>
+</body>
+</html>
