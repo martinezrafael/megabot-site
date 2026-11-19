@@ -69,7 +69,7 @@ input, select, textarea {
     .hero {
         grid-template-columns: 1fr !important;
         gap: 32px !important;
-        padding: 32px 0 48px !important;
+        padding: 32px 8px 48px !important;
     }
 
     .lead {
