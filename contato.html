@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Contato | megabot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <main class="page-section">
+        <div class="w-narrow">
+            <h1>Contato</h1>
+            <p style="margin-bottom:28px">Tem dúvidas sobre os planos, quer agendar uma demonstração ou precisa de suporte? Preencha o formulário abaixo.</p>
+
+            <div class="card">
+                <form class="hs-form" data-hubspot-form="contact" data-success-msg="Mensagem enviada com sucesso! Responderemos em breve.">
+                    <div class="hs-field">
+                        <label for="contact-name">Nome completo</label>
+                        <input id="contact-name" name="firstname" type="text" required placeholder="Seu nome">
+                    </div>
+                    <div class="hs-field">
+                        <label for="contact-email">E-mail</label>
+                        <input id="contact-email" name="email" type="email" required placeholder="voce@empresa.com.br">
+                    </div>
+                    <div class="hs-field">
+                        <label for="contact-phone">Telefone / WhatsApp</label>
+                        <input id="contact-phone" name="hs_whatsapp_phone_number" type="tel" placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="hs-field">
+                        <label for="contact-subject">Assunto</label>
+                        <select id="contact-subject" name="subject">
+                            <option value="duvidas_comerciais_e_planos">Dúvidas comerciais e planos</option>
+                            <option value="suporte_tecnico">Suporte técnico</option>
+                            <option value="solicitacao_de_privacidade">Solicitação de privacidade (LGPD)</option>
+                            <option value="outro_assunto">Outro assunto</option>
+                        </select>
+                    </div>
+                    <div class="hs-field">
+                        <label for="contact-message">Mensagem</label>
+                        <textarea id="contact-message" name="message" rows="4" required placeholder="Como podemos ajudar a sua loja?"></textarea>
+                    </div>
+                    <button class="btn" type="submit">Enviar mensagem</button>
+                    <p class="hs-status" role="status"></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/env.js"></script>
+    <script src="assets/js/hubspot.js"></script>
+</body>
+</html>
