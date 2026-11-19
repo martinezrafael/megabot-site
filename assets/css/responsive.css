@@ -1,0 +1,158 @@
+/* Melhorias de responsividade para mobile e tablet */
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* Evita zoom automático no iOS ao focar campos de formulário */
+input, select, textarea {
+    font-size: 16px !important;
+}
+
+/* Botão do menu mobile */
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--ink);
+    cursor: pointer;
+}
+
+@media (max-width: 860px) {
+    .w, .w-narrow {
+        padding: 0 18px;
+    }
+
+    .bar {
+        flex-wrap: wrap;
+        padding: 10px 0;
+        min-height: 64px;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    nav.menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 6px;
+        padding: 12px 0 6px;
+        border-top: 1px solid var(--line);
+        margin-top: 8px;
+    }
+
+    nav.menu.is-open {
+        display: flex;
+    }
+
+    nav.menu a:not(.btn) {
+        display: flex !important;
+        width: 100%;
+        padding: 10px 12px;
+        min-height: 44px;
+    }
+
+    nav.menu a.btn {
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        padding: 32px 0 48px !important;
+    }
+
+    .lead {
+        font-size: 17px !important;
+    }
+
+    .cta {
+        flex-direction: column;
+    }
+
+    .cta .btn {
+        width: 100%;
+    }
+
+    .phone {
+        max-width: 100% !important;
+        padding: 14px !important;
+        border-radius: 22px !important;
+    }
+
+    .chat {
+        min-height: 290px !important;
+    }
+
+    .m {
+        max-width: 92% !important;
+        font-size: 15px !important;
+    }
+
+    .band, .final {
+        padding: 48px 0 !important;
+    }
+
+    section, .page-section {
+        padding: 44px 0 !important;
+    }
+
+    .trio, .steps {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .trio p, .trio p:first-child {
+        padding: 0 !important;
+        border-left: 0 !important;
+    }
+
+    .feat div {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+        padding: 20px 0 !important;
+    }
+
+    .final-form, .card {
+        padding: 20px 16px !important;
+        border-radius: 14px !important;
+    }
+
+    footer {
+        padding: 28px 0 36px !important;
+    }
+
+    footer .row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .status-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 14px 16px;
+    }
+
+    th, td {
+        padding: 11px 12px !important;
+        font-size: 14.5px;
+    }
+
+    thead .price {
+        font-size: 24px !important;
+    }
+}
