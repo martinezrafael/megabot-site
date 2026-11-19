@@ -185,15 +185,10 @@
 
         .hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+            grid-template-columns: 1.1fr .9fr;
             gap: 56px;
             align-items: center;
-            padding: 72px 0 80px;
-            max-width: 100%;
-        }
-        .hero > * {
-            min-width: 0;
-            max-width: 100%;
+            padding: 72px 0 80px
         }
 
         h1 {
@@ -537,10 +532,9 @@
 
         @media (max-width:860px) {
             .hero {
-                grid-template-columns: minmax(0, 1fr);
+                grid-template-columns: 1fr;
                 gap: 40px;
-                padding: 40px 0 56px;
-                width: 100%;
+                padding: 40px 0 56px
             }
 
             nav.menu a:not(.btn) {
